@@ -103,6 +103,6 @@ logic_elig <- function(event=NULL, elin_spec='elin_',elex_spec='elex_') {
   y$calc <- paste0('if(',y$inc,',1,if(',y$out,',0,2))')
 
   # copy to clipboard
-  copy.table(y)
+  copy.table(y, col.names=TRUE)
 
 }

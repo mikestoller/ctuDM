@@ -1,3 +1,7 @@
+#' @param obj
+#'
+#' @param size
+#'
 #' @name copy.table
 #' @export copy.table
 #' @title Get table output to clipboard for easy pasting into excel.
@@ -10,9 +14,10 @@
 #' @author NA
 #'
 
-copy.table <- function(obj, size = 4096) {
+copy.table <- function(obj, size = 4096, col.names = FALSE) {
+
   clip <- paste('clipboard-', size, sep = '')
   f <- file(description = clip, open = 'w')
-  write.table(obj, f, row.names = FALSE, col.names = FALSE, sep = '\t')
+  write.table(obj, f, row.names = FALSE, sep = '\t')
   close(f)
 }
