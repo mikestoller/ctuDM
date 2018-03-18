@@ -2,4 +2,5 @@
 
 export(copy.table)
 export(logic_elig)
+export(repeat_lines)
 importFrom(utils,readClipboard)
