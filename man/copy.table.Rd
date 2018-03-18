@@ -12,7 +12,7 @@ copy.table(obj, size = 4096, col.names = FALSE)
 \item{size}{}
 }
 \value{
-A 2 row-table  is returned.
+A table is returned.
 }
 \description{
 This function gives a table output to the clipboard.
