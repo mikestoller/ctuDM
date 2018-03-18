@@ -9,7 +9,7 @@
 #' @description This function gives a table output to the clipboard.
 #'
 #'
-#' @return A 2 row-table  is returned.
+#' @return A table is returned.
 #'
 #' @author NA
 #'
