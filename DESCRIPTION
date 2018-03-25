@@ -3,7 +3,7 @@ Title: Functions for DM tasks
 Version: 0.0.0.9000
 Authors@R: person("Michael", "Stoller", email = "mstoller84@gmail.com", role = c("aut", "cre"))
 Description: Provides functions for tedious DM tasks.
-Depends: R (>= 3.4.3)
+Depends: R (>= 3.4.0)
 License: MIT
 Encoding: UTF-8
 LazyData: true
