@@ -2,7 +2,7 @@
 % Please edit documentation in R/comma_collapse.R
 \name{comma_collapse}
 \alias{comma_collapse}
-\title{Collapses input (as rows) from clipboard with comma sign and adds square brackets.}
+\title{Collapses input (as rows) from clipboard with comma sign and adds optional square brackets.}
 \usage{
 comma_collapse(brackets = TRUE)
 }
@@ -13,7 +13,7 @@ comma_collapse(brackets = TRUE)
 One cell with rows collapsed by comma sign.
 }
 \description{
-This function gets rows from the clipboard and outputs the rows (with square brackets) connected by plus signs.
+This function gets rows from the clipboard and outputs the rows (with optional square brackets) connected by plus signs.
 }
 \examples{
 \dontrun{

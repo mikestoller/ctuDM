@@ -2,7 +2,7 @@
 % Please edit documentation in R/plus_collapse.R
 \name{plus_collapse}
 \alias{plus_collapse}
-\title{Collapses input (as rows) from clipboard with plus sign and adds square brackets.}
+\title{Collapses input (as rows) from clipboard with plus sign and adds optional square brackets.}
 \usage{
 plus_collapse()
 }
@@ -13,7 +13,7 @@ plus_collapse()
 One cell with rows collapsed by plus sign.
 }
 \description{
-This function gets rows from the clipboard and outputs the rows (with square brackets) connected by plus signs.
+This function gets rows from the clipboard and outputs the rows (with optional square brackets) connected by plus signs.
 }
 \examples{
 \dontrun{
