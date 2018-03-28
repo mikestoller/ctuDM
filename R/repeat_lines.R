@@ -51,7 +51,7 @@ repeat_lines <- function(repeatn=1){
 
   counter_str <-
     stringr::str_extract(string = x[1,1],
-                pattern = '_[:digit:]_')
+                         pattern = '_[:digit:]_')
 
   if(is.na(counter_str))
     stop(
@@ -88,7 +88,7 @@ repeat_lines <- function(repeatn=1){
   # ----------------------------------------------------------------------------
 
   # stop if first row is not a descriptive
-  if(!str_detect(x[1,4],"descriptive"))
+  if(!stringr::str_detect(x[1,4],"descriptive"))
     stop(
       "first row of repetition does not have field_type descriptive, aborting..",
       call. = FALSE)
@@ -176,7 +176,7 @@ repeat_lines <- function(repeatn=1){
       sapply(X=y[i:(i+rep_length-1),1],
                simplify = TRUE,
            FUN = function(x)
-             str_replace(string  = x,
+             stringr::str_replace(string  = x,
                              pattern = counter_str,
                              replacement =
                                paste0('_',
@@ -191,7 +191,7 @@ repeat_lines <- function(repeatn=1){
       sapply(X=y[i,5],
              simplify = TRUE,
              FUN = function(x)
-               str_replace(string  = x,
+               stringr::str_replace(string  = x,
                            pattern = header_str,
                            replacement =
                              paste0(' ',
@@ -205,7 +205,7 @@ repeat_lines <- function(repeatn=1){
     y[i:(i+rep_length-1),12] <-
       sapply(X=y[i:(i+rep_length-1),12],
              FUN = function(x)
-               str_replace(string  = x,
+               stringr::str_replace(string  = x,
                            pattern = br_logic_str_repl,
                            replacement =
                              paste0('> ',
@@ -221,7 +221,7 @@ repeat_lines <- function(repeatn=1){
         sapply(X=y[i:(i+rep_length-1),12],
                simplify = TRUE,
                FUN = function(x)
-                 str_replace(string  = x,
+                 stringr::str_replace(string  = x,
                              pattern = paste0('_',counter_num,'_'),
                              replacement =
                                paste0('_',
@@ -235,7 +235,7 @@ repeat_lines <- function(repeatn=1){
 } # end loop
 
   # copy to clipboard
-  copy.table(y)
+  ctuDM::copy.table(y)
 
   message('done, copied output to clipboard')
 
