@@ -96,7 +96,7 @@ repeat_lines <- function(repeatn=1){
   header_str <-
     stringr::str_extract(
       string = x[1,5],
-      pattern = paste0('\\s',counter_num,'\\s?(</b>)?</div>')
+      pattern = paste0('\\s',counter_num,'\\s?(</b>)')
       )
 
 
@@ -196,7 +196,7 @@ repeat_lines <- function(repeatn=1){
                            replacement =
                              paste0(' ',
                                     counter_num+which(mutate_seq == i)-1,
-                                    ' </b></div>')
+                                    ' </b>')
                )
       )
 
