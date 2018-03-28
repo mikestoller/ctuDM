@@ -16,7 +16,7 @@
 #' #Run function to create 3 repetitions
 #' repeat_lines(repeatn = 3)
 #' }
-#' @importFrom utils readClipboard
+#' @import utils
 #' @import stringr
 #'
 repeat_lines <- function(repeatn=1){
