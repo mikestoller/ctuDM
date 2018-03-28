@@ -75,15 +75,7 @@ quickor <- function(){
 
 }
 
-quickplus <- function(){
 
-  x <- readClipboard()
-
-  y <- paste0(" ",x," ",collapse=" + ")
-
-  writeClipboard(y)
-
-}
 
 quickcomma <- function(brackets=FALSE){
 

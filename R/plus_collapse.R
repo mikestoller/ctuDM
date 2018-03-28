@@ -16,7 +16,8 @@
 #' #Run function without square brackets
 #' plus_collapse(brackets = FALSE)
 #' }
-#' @importFrom utils clipboard
+#' @importFrom utils readClipboard
+#' @importFrom utils writeClipboard
 #'
 plus_collapse <- function(){
 
