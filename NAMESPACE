@@ -3,4 +3,7 @@
 export(copy.table)
 export(logic_elig)
 export(repeat_lines)
+import(checkmate)
+import(stringr)
+import(utils)
 importFrom(utils,readClipboard)
