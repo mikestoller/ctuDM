@@ -17,7 +17,7 @@
 #' repeat_lines(repeatn = 3)
 #' }
 #' @importFrom utils readClipboard
-#' @importFrom stringr stringr::
+#' @import stringr
 #'
 repeat_lines <- function(repeatn=1){
 
@@ -50,7 +50,7 @@ repeat_lines <- function(repeatn=1){
   # ----------------------------------------------------------------------------
 
   counter_str <-
-    stringr::(string = x[1,1],
+    stringr::str_extract(string = x[1,1],
                 pattern = '_[:digit:]_')
 
   if(is.na(counter_str))
@@ -60,14 +60,14 @@ repeat_lines <- function(repeatn=1){
 
   counter_num <-
     as.numeric(
-      stringr::(string = counter_str,
+      stringr::str_extract(string = counter_str,
                 pattern = '[:digit:]')
     )
 
   ## check that other variable names follow the format
 
   counter_str_check <-
-    stringr::_all(string = x[1:(nrow(x)),1],
+    stringr::str_extract_all(string = x[1:(nrow(x)),1],
                 pattern = paste0('_',
                                  counter_num,
                                  '_'
@@ -94,7 +94,7 @@ repeat_lines <- function(repeatn=1){
       call. = FALSE)
 
   header_str <-
-    stringr::(
+    stringr::str_extract(
       string = x[1,5],
       pattern = paste0('\\s',counter_num,'\\s?(</b>)?</div>')
       )
@@ -107,12 +107,12 @@ repeat_lines <- function(repeatn=1){
   br_log_counter <- counter_num-1
 
   br_logic_str <-
-    stringr::(string = x[1,12],
+    stringr::str_extract(string = x[1,12],
                 pattern = paste0("\\[(.*?)\\]\\s?>\\s?",br_log_counter)
                 )
 
   br_logic_str_repl <-
-    stringr::(string= br_logic_str,
+    stringr::str_extract(string= br_logic_str,
                 pattern= paste0(">\\s?",br_log_counter)
                 )
 
@@ -121,7 +121,7 @@ repeat_lines <- function(repeatn=1){
 
   # identify other branching logic that needs adaptation
   br_logic_other_str <-
-  stringr::_all(
+  stringr::str_extract_all(
     string = x[1:nrow(x),12],
     pattern =
       paste0(
