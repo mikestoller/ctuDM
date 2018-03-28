@@ -77,23 +77,6 @@ quickor <- function(){
 
 
 
-quickcomma <- function(brackets=FALSE){
-
-  x <- readClipboard()
-
-  if (brackets){
-
-    y <- paste0("[",x,"]",collapse=",")
-
-
-  } else{
-  y <- paste0(" ",x," ",collapse=",")
-  }
-
-  writeClipboard(y)
-
-}
-
 extract_from_quotes <- function(){
   x <- readClipboard()
 
