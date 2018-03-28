@@ -17,6 +17,7 @@
 #' repeat_lines(repeatn = 3)
 #' }
 #' @importFrom utils readClipboard
+#' @importFrom stringr str_extract
 #'
 repeat_lines <- function(repeatn=1){
 
