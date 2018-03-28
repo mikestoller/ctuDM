@@ -18,6 +18,7 @@
 #' }
 #' @import utils
 #' @import stringr
+#' @import checkmate
 #'
 repeat_lines <- function(repeatn=1){
 
@@ -36,7 +37,6 @@ repeat_lines <- function(repeatn=1){
 
   # check input
   checkmate::assertDataFrame(x,ncols = 18)
-
 
   message('table read from clipboard: number of rows: ',nrow(x),
           ', number of columns: ',ncol(x))
