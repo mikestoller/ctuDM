@@ -15,7 +15,7 @@ dict_choices(stepsize = 1, stepmin = 1)
 A one-cell string with formatting according to choices in REDCap dictionary.
 }
 \description{
-This function gets variables (in rows) from the clipboard and outputs choices for pasting into the REDCap dictionary.
+This function gets variables (in rows) from the clipboard and outputs choices for pasting into the REDCap dictionary. It assigns values to the choices automatically.
 }
 \examples{
 \dontrun{

@@ -2,7 +2,7 @@
 #' @export dict_choices
 #' @title Creates choices from rows.
 #'
-#' @description This function gets variables (in rows) from the clipboard and outputs choices for pasting into the REDCap dictionary.
+#' @description This function gets variables (in rows) from the clipboard and outputs choices for pasting into the REDCap dictionary. It assigns values to the choices automatically.
 #'
 #' @param stepsize 1 by default. The stepsize by which to increment the choice value from one choice to the next.
 #' @param stepmin 1 by default. The value for the first choice
