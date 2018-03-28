@@ -2,9 +2,9 @@
 
 export(copy.table)
 export(dict_choices)
+export(dict_rep_lines)
 export(logic_elig)
 export(plus_collapse)
-export(repeat_lines)
 import(checkmate)
 import(stringr)
 import(utils)

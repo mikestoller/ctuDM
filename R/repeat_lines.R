@@ -1,6 +1,6 @@
 
-#' @name repeat_lines
-#' @export repeat_lines
+#' @name dict_rep_lines
+#' @export dict_rep_lines
 #' @title Create repetitions for redcap dictionary
 #'
 #' @description This function gets rows from the clipboard and outputs the repetitions back to the clipboard.
@@ -20,7 +20,7 @@
 #' @import stringr
 #' @import checkmate
 #'
-repeat_lines <- function(repeatn=1){
+dict_rep_lines <- function(repeatn = 1){
 
   checkmate::assert_int(repeatn,lower=1)
 
