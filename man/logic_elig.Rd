@@ -30,6 +30,14 @@ A 2 row-table  with row 1 = header and row 2 = value is returned with the follow
 \description{
 This function gets variables (in rows) from the clipboard and outputs logic and calculation for eligibility.
 }
+\details{
+logic_elig() creates the branching logic and calculation from the clipboard input of eligibility variables. It creates
+branching logic for three cases: eligible, not eligible and eligibility criteria missing (incomplete). The calculation gives 0 =
+not eligible, 1 = eligible and 2 = eligibility criteria missing (incomplete). Variables that are not detected as eligiblity criteria are ignored.
+Eligibility variables are detected by the prefix, by default 'elin_' for inclusion criteria, 'elex_' for exclusion criteria.
+Furthermore, sex-specific eligibility criteria are detected by the string 'fem_' in the eligibility variables, e.g. 'elin_fem_' or
+'elex_fem'. The logic is then adapted for the sex-specific variables.
+}
 \examples{
 \dontrun{
 #Run function with specified event

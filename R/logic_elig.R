@@ -16,6 +16,14 @@
 #' @return* `mis` : logic which is TRUE, when at least one eligibility criterion is missing AND other eligibility criteria are fullfilled (if an eligibility criterion is not fullfilled, this is not TRUE)
 #' @return* `calc`: calculation which gives values: 0= not eligible, 1 = eligible, 2 = missing
 #'
+#'@details logic_elig() creates the branching logic and calculation from the clipboard input of eligibility variables. It creates
+#'branching logic for three cases: eligible, not eligible and eligibility criteria missing (incomplete). The calculation gives 0 =
+#'not eligible, 1 = eligible and 2 = eligibility criteria missing (incomplete). Variables that are not detected as eligiblity criteria are ignored.
+#'Eligibility variables are detected by the prefix, by default 'elin_' for inclusion criteria, 'elex_' for exclusion criteria.
+#'Furthermore, sex-specific eligibility criteria are detected by the string 'fem_' in the eligibility variables, e.g. 'elin_fem_' or
+#''elex_fem'. The logic is then adapted for the sex-specific variables.
+#'
+#'
 #' @author Michael Stoller <mstoller84@gmail.com> <michael.stoller@ctu.unibe.ch>
 #'
 #' @examples
