@@ -4,14 +4,17 @@
 \alias{logic_elig}
 \title{Create logic for eligibility criteria.}
 \usage{
-logic_elig(event = NULL, elin_spec = "elin_", elex_spec = "elex_")
+logic_elig(event = NULL, elin_spec = "elin_", elex_spec = "elex_",
+  sex_spec = "sex")
 }
 \arguments{
+\item{event}{NULL by default. Specify event_name (including square brackets), if field is used in events other than the event containing the eligibility criteria.}
+
 \item{elin_spec}{Specifier for inclusion criterion. 'elin_' by default.}
 
 \item{elex_spec}{Specifier for exclusion criterion. 'elex_' by default.}
 
-\item{event_name}{NULL by default. Specify event_name, if field is used in events other than the event containing the eligibility criteria.}
+\item{sex_spec}{Specifier for variable sex to adapt logic for sex-specific eligibility criteria. 'sex' by default. Assumed coding is 1 = male, 2 = female.}
 }
 \value{
 A 2 row-table  with row 1 = header and row 2 = value is returned with the following headers and values,
