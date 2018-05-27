@@ -36,7 +36,7 @@ branching logic for three cases: eligible, not eligible and eligibility criteria
 not eligible, 1 = eligible and 2 = eligibility criteria missing (incomplete). Variables that are not detected as eligiblity criteria are ignored.
 Eligibility variables are detected by the prefix, by default 'elin_' for inclusion criteria, 'elex_' for exclusion criteria.
 Furthermore, sex-specific eligibility criteria are detected by the string 'fem_' in the eligibility variables, e.g. 'elin_fem_' or
-'elex_fem'. The logic is then adapted for the sex-specific variables.
+'elex_fem_'. The logic is then adapted for the sex-specific variables.
 }
 \examples{
 \dontrun{
