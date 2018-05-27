@@ -33,7 +33,7 @@ This function gets variables (in rows) from the clipboard and outputs logic and 
 \examples{
 \dontrun{
 #Run function with specified event
-logic_elig(event = "eligibility")
+logic_elig(event = "[eligibility]")
 }
 }
 \author{

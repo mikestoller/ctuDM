@@ -21,7 +21,7 @@
 #' @examples
 #' \dontrun{
 #' #Run function with specified event
-#' logic_elig(event = "eligibility")
+#' logic_elig(event = "[eligibility]")
 #' }
 #' @importFrom utils readClipboard
 
