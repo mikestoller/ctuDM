@@ -5,7 +5,7 @@
 #'
 #' @description This function gets variables (in rows) from the clipboard and outputs logic and calculation for eligibility.
 #'
-#' @param event NULL by default. Specify event_name (including square brackets), if field is used in events other than the event containing the eligibility criteria.
+#' @param event NULL by default. Specify event (including square brackets), if field is used in events other than the event containing the eligibility criteria.
 #' @param elin_spec Specifier for inclusion criterion. 'elin_' by default.
 #' @param elex_spec Specifier for exclusion criterion. 'elex_' by default.
 #' @param sex_spec Specifier for variable sex to adapt logic for sex-specific eligibility criteria. 'sex' by default. Assumed coding is 1 = male, 2 = female.

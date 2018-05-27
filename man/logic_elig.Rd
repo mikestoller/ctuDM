@@ -8,7 +8,7 @@ logic_elig(event = NULL, elin_spec = "elin_", elex_spec = "elex_",
   sex_spec = "sex")
 }
 \arguments{
-\item{event}{NULL by default. Specify event_name (including square brackets), if field is used in events other than the event containing the eligibility criteria.}
+\item{event}{NULL by default. Specify event (including square brackets), if field is used in events other than the event containing the eligibility criteria.}
 
 \item{elin_spec}{Specifier for inclusion criterion. 'elin_' by default.}
 
