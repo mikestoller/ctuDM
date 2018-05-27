@@ -33,6 +33,54 @@ event_br <- function(){
 
 }
 
+quick_br <- function(){
+
+  x <- readClipboard() # get clipboard input
+
+  y <- vector()
+
+  for(i in 1:length(x)){
+    y[i] <- paste0("[",x[i],"] = '1'")
+  }
+
+  # put together
+
+  copy.table(y)
+
+}
+
+lab_diag <- function(){
+
+  x <- readClipboard() # get clipboard input
+
+  y <- vector()
+
+  for(i in 1:length(x)){
+    y[i] <- paste0("if( [",x[i],"] = 'NaN',99,if( [",x[i],"] <480,0,1))")
+  }
+
+  # put together
+
+  copy.table(y)
+
+}
+
+
+div_class <- function(h = 2){
+
+  x <- readClipboard() # get clipboard input
+
+  y <- vector()
+
+  for(i in 1:length(x)){
+    y[i] <- paste0("<div class='blue'><h2><b>",x[i],"</b></h2></div>")
+  }
+
+  # put together
+
+  copy.table(y)
+
+}
 
 warnbatch <- function(repeatn = 1, multiling = 0){
 
@@ -78,6 +126,7 @@ quickor <- function(){
 
 
 extract_from_quotes <- function(){
+
   x <- readClipboard()
 
   y <- str_extract_all(x,"\".*?\"",simplify = TRUE)
@@ -111,10 +160,25 @@ number_of_nonempty_records <- function(radio=FALSE){
 
   }
 
-
   y <- paste0(y,collapse = ",")
   y <- paste0('sum(',y,')')
 
   writeClipboard(y)
+
+}
+
+
+separate_whitespace <- function(){
+
+  x <-
+    readClipboard()
+
+  y <-
+    read.table(text = x,
+               sep = "",
+               quote = "",
+               fill = TRUE)
+
+  ctuDM::copy.table(y)
 
 }

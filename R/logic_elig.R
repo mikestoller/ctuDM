@@ -5,9 +5,10 @@
 #'
 #' @description This function gets variables (in rows) from the clipboard and outputs logic and calculation for eligibility.
 #'
-#' @param event_name NULL by default. Specify event_name, if field is used in events other than the event containing the eligibility criteria.
+#' @param event NULL by default. Specify event_name (including square brackets), if field is used in events other than the event containing the eligibility criteria.
 #' @param elin_spec Specifier for inclusion criterion. 'elin_' by default.
 #' @param elex_spec Specifier for exclusion criterion. 'elex_' by default.
+#' @param sex_spec Specifier for variable sex to adapt logic for sex-specific eligibility criteria. 'sex' by default. Assumed coding is 1 = male, 2 = female.
 #'
 #' @return A 2 row-table  with row 1 = header and row 2 = value is returned with the following headers and values,
 #' @return* `inc` : logic which is TRUE, when all eligibility criteria are fullfilled (inclusion criteria = yes and exclusion critera = no)
@@ -24,7 +25,7 @@
 #' }
 #' @importFrom utils readClipboard
 
-logic_elig <- function(event=NULL, elin_spec='elin_',elex_spec='elex_') {
+logic_elig <- function(event=NULL, elin_spec='elin_',elex_spec='elex_', sex_spec = 'sex') {
 
   x <- utils::readClipboard() # get clipboard input, one row = one variable
 
@@ -36,24 +37,42 @@ logic_elig <- function(event=NULL, elin_spec='elin_',elex_spec='elex_') {
   cin = 1 # initialize counter
 
   # logic for eligible = yes
+  #-----------------------------------------------------------------------------
   # set 1 for inclusion criterion, 0 for exclusion criterion
 
   for(i in 1:length(x)) {
     # if it's an inclusion criterion
     if(pmatch(elin_spec, x[i],nomatch = 0)){
-      y$inc[cin] <- paste0("[",x[i],"] = '1'")
+
+      # check if criterion is sex-specific
+      if(pmatch(paste0(elin_spec,'fem_'), x[i],nomatch = 0)){
+        y$inc[cin] <- paste0("( (",event,"[",sex_spec,"] = '2' AND ",event,"[",x[i],"] = '1') OR ",event,"[",sex_spec,"] = '1' )")
+        cin = cin + 1 # increase counter
+      } else{
+
+      y$inc[cin] <- paste0(event,"[",x[i],"] = '1'")
       cin = cin + 1
+      }
     }
     # if it's an exclusion criterion
     else if (pmatch(elex_spec, x[i],nomatch = 0)) {
-      y$inc[cin] <- paste0("[",x[i],"] = '0'")
+
+      # check if criterion is sex-specific
+      if(pmatch(paste0(elex_spec,'fem_'), x[i],nomatch = 0)){
+        y$inc[cin] <- paste0("( (",event,"[",sex_spec,"] = '2' AND ",event,"[",x[i],"] = '0') OR ",event,"[",sex_spec,"] = '1' )")
+        cin = cin + 1 # increase counter
+      } else{
+
+      y$inc[cin] <- paste0(event,"[",x[i],"] = '0'")
       cin = cin + 1
+      }
     }
   }
 
   y$inc <- paste(y$inc[1:length(y$inc)],collapse=" AND ")
 
   # logic for eligible = no
+  #-----------------------------------------------------------------------------
   # set 0 for inclusion criterion, 1 for exclusion criterion
 
   cout = 1 #initialize counter
@@ -61,12 +80,12 @@ logic_elig <- function(event=NULL, elin_spec='elin_',elex_spec='elex_') {
   for(i in 1:length(x)) {
     if(pmatch(elin_spec, x[i],nomatch = 0)) # if it's an inclusion criterion
     {
-      y$out[cout] <- paste0("[",x[i],"] = '0'")
+      y$out[cout] <- paste0(event,"[",x[i],"] = '0'")
       cout = cout + 1 # increase counter
     }
     else if (pmatch(elex_spec, x[i],nomatch = 0)) # if it's an exclusion criterion
     {
-      y$out[cout] <- paste0("[",x[i],"] = '1'")
+      y$out[cout] <- paste0(event,"[",x[i],"] = '1'")
       cout = cout + 1 # increase counter
     }
   }
@@ -74,22 +93,41 @@ logic_elig <- function(event=NULL, elin_spec='elin_',elex_spec='elex_') {
   y$out <- paste(y$out[1:length(y$out)],collapse=" OR ")
 
   # logic for missing eligibility warning
-  # "" and <> 0 for inclusion criterion, "" and <> 1 for exclusion criterion
+  #-----------------------------------------------------------------------------
+  # "" and <> '0' for inclusion criterion, "" and <> '1' for exclusion criterion
 
   cmis = 1
 
   for(i in 1:length(x)) {
     if(pmatch(elin_spec, x[i],nomatch = 0)) # if it's an inclusion criterion
     {
-      tmp$mis1[cmis] <- paste0("[",x[i],"] = ''")
-      tmp$mis2[cmis] <- paste0("[",x[i],"] <> '0'")
+
+      # check if criterion is sex-specific
+      if(pmatch(paste0(elin_spec,'fem_'), x[i],nomatch = 0)){
+        tmp$mis1[cmis] <- paste0("( (",event,"[",sex_spec,"] = '2' AND ",event,"[",x[i],"] = '') OR ",event,"[",sex_spec,"] = '' )")
+        tmp$mis2[cmis] <- paste0(" ",event,"[",x[i],"] <> '0' ")
+        cmis = cmis + 1 # increase counter
+      } else{
+
+      tmp$mis1[cmis] <- paste0(event,"[",x[i],"] = ''")
+      tmp$mis2[cmis] <- paste0(event,"[",x[i],"] <> '0'")
       cmis = cmis + 1 # increase counter
+      }
     }
     else if (pmatch(elex_spec, x[i],nomatch = 0)) # if it's an exclusion criterion
     {
-      tmp$mis1[cmis] <- paste0("[",x[i],"] = ''")
-      tmp$mis2[cmis] <- paste0("[",x[i],"] <> '1'")
+
+      # check if criterion is sex-specific
+      if(pmatch(paste0(elex_spec,'fem_'), x[i],nomatch = 0)){
+        tmp$mis1[cmis] <- paste0("( (",event,"[",sex_spec,"] = '2' AND ",event,"[",x[i],"] = '') OR ",event,"[",sex_spec,"] = '' )")
+        tmp$mis2[cmis] <- paste0(" ",event,"[",x[i],"] <> '1' ")
+        cmis = cmis + 1 # increase counter
+      } else{
+
+      tmp$mis1[cmis] <- paste0(event,"[",x[i],"] = ''")
+      tmp$mis2[cmis] <- paste0(event,"[",x[i],"] <> '1'")
       cmis = cmis + 1 # increase counter
+      }
     }
   }
 

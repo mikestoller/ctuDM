@@ -18,6 +18,6 @@ copy.table <- function(obj, size = 4096, col.names = FALSE) {
 
   clip <- paste('clipboard-', size, sep = '')
   f <- file(description = clip, open = 'w')
-  write.table(obj, f, row.names = FALSE, sep = '\t',na="")
+  write.table(obj, f, row.names = FALSE, col.names = col.names,sep = '\t',na="")
   close(f)
 }
